@@ -1,0 +1,11 @@
+﻿  hamming.cpp
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(31,14): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(35,27): warning C4244:  'argument': conversion from 'float' to 'const _Ty', possible loss of data
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(35,27): warning C4244:         with
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(35,27): warning C4244:         [
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(35,27): warning C4244:             _Ty=int
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(35,27): warning C4244:         ]
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(39,32): warning C4244:  '=': conversion from 'unsigned int' to 'float', possible loss of data
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(46,28): warning C4018:  '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(124,28): warning C4018:  '<=': signed/unsigned mismatch
+  Hamming.vcxproj -> F:\School - Uni\Year 3\Hamming\Hamming\Debug\Hamming.exe
