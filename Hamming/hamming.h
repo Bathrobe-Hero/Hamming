@@ -15,7 +15,6 @@ public:
 	vector<bool> boolData;//used to hold the data stream (not using bitsream as that needs to know how meany bites befor it can create)
 							//frount values is LSB
 private:
-
 	int error = 0; //for return: 0=no error found, 1=error found and fixed, -1=error fanc and cant be fixed
 };
 

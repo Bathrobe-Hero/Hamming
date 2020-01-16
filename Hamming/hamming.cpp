@@ -25,7 +25,7 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 	bitset<noOfBits> pbit;//conatins the pbitd vaulues
 	
 	
-	float isP=0;
+	int isP=0;
 	for (int count = 0; isP <= data->boolData.size(); count++)//generates witch bit are polaity
 	{
 		 isP = (pow(2, count));//plarity bits are always this caulation
@@ -33,6 +33,7 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 		if (isP <= data->boolData.size())
 		{
 			polairtyBits.push_back(isP);
+			cout << isP;
 		}
 		else
 		{
@@ -40,6 +41,7 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 		}
 		
 	}
+	cout<<endl;
 
 	//---works out new pbit values--- 
 	bitset<noOfBits> newPbit;//conatins the new pbitd vaulues. newPbit is the recaulated pbits
