@@ -1,7 +1,12 @@
 ﻿  hamming.cpp
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(29,26): warning C4018:  '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(31,14): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(33,11): warning C4018:  '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(48,28): warning C4018:  '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(126,28): warning C4018:  '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(5,20): warning C4018:  '<': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(38,26): warning C4018:  '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(40,14): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(42,11): warning C4018:  '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(66,41): warning C4805:  '==': unsafe mix of type '_Ty' and type 'bool' in operation
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(66,41): warning C4805:         with
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(66,41): warning C4805:         [
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(66,41): warning C4805:             _Ty=int
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(66,41): warning C4805:         ]
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(128,32): warning C4018:  '<': signed/unsigned mismatch
   Hamming.vcxproj -> F:\School - Uni\Year 3\Hamming\Hamming\Debug\Hamming.exe

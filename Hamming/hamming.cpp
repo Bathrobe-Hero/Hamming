@@ -1,6 +1,14 @@
 #include "hamming.h"
 
-//----Data----
+int VectorOut(vector<int> vOut) {//used to output the data in a vector
+
+	for (int i = 0; i < vOut.size(); i++)
+	{
+		cout << vOut[i]<<"|";
+	}
+	cout << endl;
+	return 0;
+}
 
 
 //----Hamming----
@@ -20,6 +28,7 @@ Hamming::Hamming() {//construtor
 
 int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be need to change to binray (vectory of bools?))
 {
+	VectorOut(data->boolData);
 	//const int noOfBits = polairtyBits.size(); //dose not count as a const?
 	const int noOfBits = 4;//hold how meny bits the bitset will hold
 	bitset<noOfBits> pbit;//conatins the pbitd vaulues
@@ -43,13 +52,8 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 	}
 	cout<<endl;
 
-	//---works out new pbit values--- 
-	bitset<noOfBits> newPbit;//conatins the new pbitd vaulues. newPbit is the recaulated pbits
-	for (int count = 0; count <= polairtyBits.size(); count++)
-	{
-		getNewP(count);
-		//newPbit.set(count);
-	}
+	//---works out new pbit values--- 	
+		getNewP();
 	
 
 	//----gets values of p bits----
@@ -115,27 +119,31 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 	return 0;
 }
 
-int Hamming::getNewP(int pBit)//recaulates the new plairty bits
+int Hamming::getNewP()//recaulates the new plairty bits
 {
-	
-	vector<int> newPbits = polairtyBits;
+	int isPCount = 0;//used to count thoru the know numbers if poliaty bits
+	vector<int> cleanData;// all pbit will be set to -1
 
-	newPbits.push_back(-1);//add and end value
-	
-
-	for (int count = 1; count <= data->boolData.size(); count++)
+	//----sets all pbits to = -1----
+	for (int postion = 1; postion < data->boolData.size(); postion++)//loop throu all of the data
 	{
-		if (find(newPbits.begin(), newPbits.end(), count) == newPbits.end())//should only let non parity bits in
+		if (postion != polairtyBits[isPCount])//will only let non Pbits through
 		{
-			cout << "not a pbit:" << count << endl;
-			bitset<8> numToBit(count);//only way to put int into bitset is to do it at defination
-			if (numToBit.test(pBit) == true)
-			{
-				cout << "numToBit:" << numToBit << " | bit tested:" << pBit << endl;
-			}
-
+			cleanData.push_back(data->boolData[postion-1]);
+			cout << "postion:" << postion << " | data in postion:" << data->boolData[postion] << " | isPCount:" << isPCount << " | Current Pbit checking for:" << polairtyBits[isPCount] << endl;
 		}
-
+		else
+		{
+			cleanData.push_back(-1);//all -1 are were the parity bit will go
+			if (polairtyBits.size()-1!= isPCount){
+				isPCount++;
+			}			
+		}
 	}
+	//----works out the new pbits----
+
+
+
+	VectorOut(cleanData);
 	return 0;
 }
