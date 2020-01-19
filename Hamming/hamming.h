@@ -25,10 +25,15 @@ public:
 	Hamming();//construtor (used for testing untill an input method is devied)
 
 private:
-
-	Data* data = new Data();//used to return the data (would the user have to make there own data object?)
-	int getNewP();//used to check what the value of new pbit is
-
 	vector <int>polairtyBits;//what number bits are the parity bits
 	vector <int>newPBits;//used to hold the reaculted bits
+	Data* data = new Data();//used to return the data (would the user have to make there own data object?)
+	vector<int> pbit;//used to hold the pbit values
+	//--------------------
+
+	int getNewP();//used to check what the value of new pbit is
+	vector<int> VectorXOR(vector<int>VOne, vector<int> VTwo);//used to check if the pbits and newpbits are equal to echother. should be all 0 if they are
+	int VectorOut(vector<int> vOut);//used to output the data in a vector
+	int GetPBits();
+	
 };
