@@ -1,15 +1,15 @@
 ﻿  hamming.cpp
 F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(5,20): warning C4018:  '<': signed/unsigned mismatch
 F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(18,21): warning C4018:  '<': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(68,26): warning C4018:  '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(70,14): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(72,11): warning C4018:  '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(115,40): warning C4805:  '==': unsafe mix of type '_Ty' and type 'bool' in operation
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(115,40): warning C4805:         with
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(115,40): warning C4805:         [
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(115,40): warning C4805:             _Ty=int
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(115,40): warning C4805:         ]
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(139,32): warning C4018:  '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(161,32): warning C4018:  '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(165,29): warning C4018:  '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(57,26): warning C4018:  '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(59,14): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(61,11): warning C4018:  '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(104,40): warning C4805:  '==': unsafe mix of type '_Ty' and type 'bool' in operation
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(104,40): warning C4805:         with
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(104,40): warning C4805:         [
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(104,40): warning C4805:             _Ty=int
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(104,40): warning C4805:         ]
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(127,32): warning C4018:  '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(151,32): warning C4018:  '<': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(156,29): warning C4018:  '<=': signed/unsigned mismatch
   Hamming.vcxproj -> F:\School - Uni\Year 3\Hamming\Hamming\Debug\Hamming.exe

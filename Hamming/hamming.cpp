@@ -28,18 +28,7 @@ vector<int> Hamming::VectorXOR(vector<int> VOne, vector<int> VTwo)
 	return VOut;
 }
 
-int IntToBool(int num, int testbit) {
 
-	bitset<16> bset(num);//max size 65,536
-	int even = 0;
-	cout << bset.to_string() << endl;
-	if (bset.test(testbit) == true)
-	{
-		//outputs wich bits are effected by parity bits
-		cout << "num:" << num << " | testbit;" << testbit << " | " << bset.test(testbit) << endl;		
-	}
-	return 0;
-}
 
 //----Hamming----
 Hamming::Hamming() {//construtor	
@@ -58,11 +47,7 @@ Hamming::Hamming() {//construtor
 
 int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be need to change to binray (vectory of bools?))
 {
-	VectorOut(data->boolData);
-	//const int noOfBits = polairtyBits.size(); //dose not count as a const?
-	const int noOfBits = 4;//hold how meny bits the bitset will hold
-	
-	
+	VectorOut(data->boolData);	
 	
 	int isP=0;
 	for (int count = 0; isP <= data->boolData.size(); count++)//generates witch bit are polaity
@@ -81,15 +66,12 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 		
 	}
 	cout<<endl;
+	//TODO move most of this to its own funtion
+
 
 	//---works out new pbit values--- 	
 	GetPBits();
-	getNewP();
-	
-
-	
-
-	
+	getNewP();	
 
 	//vector xor test
 	vector<int>VOne{0,1,1,0};
@@ -132,8 +114,7 @@ int Hamming::GetPBits()
 //TODO clean data dose not get the last bit?
 int Hamming::getNewP()//recaulates the new plairty bits
 {
-	int isPCount = 0;//used to count thoru the know numbers if poliaty bits
-	vector<int> cleanData;// all pbit will be set to -1
+	int isPCount = 0;//used to count thoru the know numbers if poliaty bits	
 
 	//----sets all pbits to = -1----
 	for (int postion = 1; postion <= data->boolData.size(); postion++)//loop throu all of the data
@@ -154,23 +135,59 @@ int Hamming::getNewP()//recaulates the new plairty bits
 			}			
 		}
 	}
+
 	cout << "cleanData:";
 	VectorOut(cleanData);
 	//----works out the new pbits----
 
-	for (int testbit = 0; testbit <= polairtyBits.size(); testbit++)//loops throuh the bits to check for 
+	int even;//used to see if the pbit toal trues is even
+	for (int testbit = 0; testbit < polairtyBits.size(); testbit++)//loops throuh the bits to check for 
 	{
+		even = 0;
 		cout << "Testbit:" << testbit<< endl;
 		//for (int count = 0; count < cleanData.size(); count++)
 		for (int count = 0; count <= data->boolData.size(); count++)		
 		{
-			cout << "num;" << count<< " | ";
-			IntToBool(count, testbit);
+			cout << "num:" << count<< " | ";
+			even += IntToBool(count, testbit);
 		}
+		//once all nums have been tested with that bit checks if the total is even.
+		//if so will that newPbit to 0
+		//if its odd sets newpbit to 1
+
+		if (even % 2 == 0)//devide by 2 and check remander
+		{//if even
+			newPBits.push_back(0);
+		}
+		else 
+		{//if odd
+			newPBits.push_back(1);
+		}
+
 	}
+	cout << "newPbits:";
+	VectorOut(newPBits);
+	return 0;
+}
+
+int Hamming::IntToBool(int num, int testbit)
+{
+	bitset<16> bset(num);//max size 65,536. sets num to a binray way
+	int even = 0;//hold number of trues for chekcing if evan 
+	//TODO need to be moved so it stay around longer
+	cout << bset.to_string() << endl;
+	if (bset.test(testbit) == true)
+	{
+		//outputs wich bits are effected by parity bits
+		cout << "num:" << num << " | testbit:" << testbit << " | " << bset.test(testbit) << endl;
 
 
-	VectorOut(cleanData);
+		//num-1 is the postion in the vector that this is equvalent to
+		if (cleanData[num - 1] == 1)//only trues will add to the evan
+		{
+			return 1;
+		}
+	}	
 	return 0;
 }
 
