@@ -21,7 +21,7 @@ private:
 class Hamming :private Data
 {
 public:
-	int ErrorDetect();
+	int ErrorDetect();//TODO change name
 	Hamming();//construtor (used for testing untill an input method is devied)
 
 private:
@@ -30,6 +30,7 @@ private:
 	Data* data = new Data();//used to return the data (would the user have to make there own data object?)
 	vector<int> pbit;//used to hold the pbit values
 	vector<int> cleanData;// all pbit will be set to -1
+	vector<int>XOR;//holds the XOR value for testing
 	//--------------------
 
 	int getNewP();//used to check what the value of new pbit is
@@ -37,5 +38,5 @@ private:
 	int VectorOut(vector<int> vOut);//used to output the data in a vector
 	int GetPBits();
 	int IntToBool(int num, int testbit);
-	
+	int CheckXOR();//will be used to check the XOR vector
 };

@@ -31,18 +31,19 @@ vector<int> Hamming::VectorXOR(vector<int> VOne, vector<int> VTwo)
 
 
 //----Hamming----
-Hamming::Hamming() {//construtor	
-	data->boolData.push_back(0);//test inputs. is the same as in report
+Hamming::Hamming() {//construtor
+	//test inputs. is the same as in report
+	data->boolData.push_back(0);//lsb
 	data->boolData.push_back(1);
 	data->boolData.push_back(1);
 	data->boolData.push_back(1);
 	data->boolData.push_back(0);
-	data->boolData.push_back(0);
+	data->boolData.push_back(1);//chnaged bit
 	data->boolData.push_back(1);
 	data->boolData.push_back(0);
 	data->boolData.push_back(1);
 	data->boolData.push_back(0);
-	data->boolData.push_back(1);
+	data->boolData.push_back(1);//msb
 }
 
 int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be need to change to binray (vectory of bools?))
@@ -70,16 +71,14 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 
 
 	//---works out new pbit values--- 	
-	GetPBits();
-	getNewP();	
-
-	//vector xor test
-	vector<int>VOne{0,1,1,0};
-	vector<int> VTwo{0,1,0,0};
-
-	vector<int> VOut = VectorXOR(VOne, VTwo);
-	cout << "---Vector XOR test---";
-	VectorOut(VOut);
+	GetPBits();//gets the pbits inclued
+	getNewP();//generates new pbits
+	
+	XOR =  VectorXOR(newPBits, pbit);//gets the XOR vaules for testing with
+	cout << "Vextor XOR:";
+	VectorOut(XOR);
+	cout << endl;
+	
 	return 0;
 }
 
@@ -145,7 +144,7 @@ int Hamming::getNewP()//recaulates the new plairty bits
 	{
 		even = 0;
 		cout << "Testbit:" << testbit<< endl;
-		//for (int count = 0; count < cleanData.size(); count++)
+		
 		for (int count = 0; count <= data->boolData.size(); count++)		
 		{
 			cout << "num:" << count<< " | ";
@@ -191,3 +190,22 @@ int Hamming::IntToBool(int num, int testbit)
 	return 0;
 }
 
+int Hamming::CheckXOR()
+{
+	bool error = false;//holds a flag for if thre is an error
+	//this funtion will check the output for vectorXOR to see if there are any errors and if so will atempte to fix them
+	for (auto const& value : XOR)//loops throu XOR to check if there are any true vales
+	{
+		if (value == 1)
+		{
+			error = true;
+		}
+
+		if (error == true)//if there is an error will atempted to fix it
+		{
+
+		}
+		
+	}
+	return 0;
+}
