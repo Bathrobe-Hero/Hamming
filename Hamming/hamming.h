@@ -4,7 +4,8 @@
 #include <vector>
 #include <cmath>	//used for pow()
 #include <bitset>
-#include<algorithm>	//used for find()
+//#include<algorithm>	//used for find()
+#include <numeric>  //useds for acumulate
 #pragma once
 
 using namespace std;

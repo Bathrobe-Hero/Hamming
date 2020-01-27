@@ -78,6 +78,7 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 	cout << "Vextor XOR:";
 	VectorOut(XOR);
 	cout << endl;
+	CheckXOR();
 	
 	return 0;
 }
@@ -194,18 +195,25 @@ int Hamming::CheckXOR()
 {
 	bool error = false;//holds a flag for if thre is an error
 	//this funtion will check the output for vectorXOR to see if there are any errors and if so will atempte to fix them
+	int num;
 	for (auto const& value : XOR)//loops throu XOR to check if there are any true vales
 	{
 		if (value == 1)
 		{
 			error = true;
-		}
-
-		if (error == true)//if there is an error will atempted to fix it
-		{
-
-		}
+		}	
 		
+	}
+	if (error == true)//if there is an error will atempted to fix it
+	{		
+		//converst xor to int
+		num = accumulate(XOR.rbegin(), XOR.rend(), 0, [](int x, int y) { return (x << 1) + y; });	
+		cout <<"XOR:"<< num << endl;
+		//swpa error bit
+		//requlauate pbits
+		//requlaute xor
+		//if ok let through
+		//if not repot back two or more error in binary
 	}
 	return 0;
 }
