@@ -72,13 +72,14 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 
 	//---works out new pbit values--- 	
 	GetPBits();//gets the pbits inclued
-	getNewP();//generates new pbits
+	CleanData();
+	newPBits = getNewP(data->boolData);//generates new pbits
 	
 	XOR =  VectorXOR(newPBits, pbit);//gets the XOR vaules for testing with
 	cout << "Vextor XOR:";
 	VectorOut(XOR);
 	cout << endl;
-	CheckXOR();
+	CheckXOR(XOR);
 	
 	return 0;
 }
@@ -111,8 +112,7 @@ int Hamming::GetPBits()
 	return 0;
 }
 
-//TODO clean data dose not get the last bit?
-int Hamming::getNewP()//recaulates the new plairty bits
+int Hamming::CleanData()
 {
 	int isPCount = 0;//used to count thoru the know numbers if poliaty bits	
 
@@ -121,32 +121,37 @@ int Hamming::getNewP()//recaulates the new plairty bits
 	{
 		if (postion != polairtyBits[isPCount])//will only let non Pbits through
 		{
-			cleanData.push_back(data->boolData[postion-1]);
+			cleanData.push_back(data->boolData[postion - 1]);
 			cout << "postion:" << postion;
-			cout << " | data in postion:" << data->boolData[postion-1];
-			cout <<  " | isPCount:" << isPCount;
+			cout << " | data in postion:" << data->boolData[postion - 1];
+			cout << " | isPCount:" << isPCount;
 			cout << " | Current Pbit checking for:" << polairtyBits[isPCount] << endl;
 		}
 		else
 		{
 			cleanData.push_back(-1);//all -1 are were the parity bit will go. might not need this?
-			if (polairtyBits.size()-1!= isPCount){
+			if (polairtyBits.size() - 1 != isPCount) {
 				isPCount++;
-			}			
+			}
 		}
 	}
-
 	cout << "cleanData:";
 	VectorOut(cleanData);
-	//----works out the new pbits----
+	return 0;
+}
+
+//TODO clean data dose not get the last bit?
+vector<int> Hamming::getNewP(vector<int> input)//recaulates the new plairty bits
+{	//----works out the new pbits----
 
 	int even;//used to see if the pbit toal trues is even
+	vector<int>output;
 	for (int testbit = 0; testbit < polairtyBits.size(); testbit++)//loops throuh the bits to check for 
 	{
 		even = 0;
 		cout << "Testbit:" << testbit<< endl;
 		
-		for (int count = 0; count <= data->boolData.size(); count++)		
+		for (int count = 0; count <= input.size(); count++)
 		{
 			cout << "num:" << count<< " | ";
 			even += IntToBool(count, testbit);
@@ -157,17 +162,17 @@ int Hamming::getNewP()//recaulates the new plairty bits
 
 		if (even % 2 == 0)//devide by 2 and check remander
 		{//if even
-			newPBits.push_back(0);
+			output.push_back(0);
 		}
 		else 
 		{//if odd
-			newPBits.push_back(1);
+			output.push_back(1);
 		}
 
-	}
+	}	
 	cout << "newPbits:";
-	VectorOut(newPBits);
-	return 0;
+	VectorOut(output);
+	return output;
 }
 
 int Hamming::IntToBool(int num, int testbit)
@@ -191,12 +196,12 @@ int Hamming::IntToBool(int num, int testbit)
 	return 0;
 }
 
-int Hamming::CheckXOR()
+int Hamming::CheckXOR(vector<int> inputXOR, bool flag = 0)
 {
 	bool error = false;//holds a flag for if thre is an error
 	//this funtion will check the output for vectorXOR to see if there are any errors and if so will atempte to fix them
 	int num;
-	for (auto const& value : XOR)//loops throu XOR to check if there are any true vales
+	for (auto const& value : inputXOR)//loops throu XOR to check if there are any true vales
 	{
 		if (value == 1)
 		{
@@ -204,16 +209,36 @@ int Hamming::CheckXOR()
 		}	
 		
 	}
-	if (error == true)//if there is an error will atempted to fix it
+	if (error == true & flag == 0)//if there is an error will atempted to fix it
 	{		
 		//converst xor to int
-		num = accumulate(XOR.rbegin(), XOR.rend(), 0, [](int x, int y) { return (x << 1) + y; });	
+		num = accumulate(inputXOR.rbegin(), inputXOR.rend(), 0, [](int x, int y) { return (x << 1) + y; });
 		cout <<"XOR:"<< num << endl;
 		//swpa error bit
+		vector<int> swaped = data->boolData;
+		if (swaped[num - 1] == 1)//swapts bit
+		{
+			swaped[num - 1] = 0;
+		}
+		else
+		{
+			swaped[num - 1] = 1;
+		}
+
+
+		vector<int> XorPBit = getNewP(swaped);
+
+		XorPBit = VectorXOR(XorPBit, pbit);
+		CheckXOR(XorPBit, 1);//sets flag to know it shoudent do all caulations
 		//requlauate pbits
 		//requlaute xor
 		//if ok let through
 		//if not repot back two or more error in binary
+	}
+	else if (error == true & flag == 1)
+	{
+		cout << "Two or more error. Cannot correct" << endl;
+		return 1;
 	}
 	return 0;
 }

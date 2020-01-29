@@ -32,12 +32,15 @@ private:
 	vector<int> pbit;//used to hold the pbit values
 	vector<int> cleanData;// all pbit will be set to -1
 	vector<int>XOR;//holds the XOR value for testing
+	vector<int> VectorXOR(vector<int>VOne, vector<int> VTwo);//used to check if the pbits and newpbits are equal to echother. should be all 0 if they are
 	//--------------------
 
-	int getNewP();//used to check what the value of new pbit is
-	vector<int> VectorXOR(vector<int>VOne, vector<int> VTwo);//used to check if the pbits and newpbits are equal to echother. should be all 0 if they are
+	vector<int> getNewP(vector<int> input);//used to check what the value of new pbit is
+	
 	int VectorOut(vector<int> vOut);//used to output the data in a vector
 	int GetPBits();
 	int IntToBool(int num, int testbit);
-	int CheckXOR();//will be used to check the XOR vector
+	int CheckXOR(vector<int> inputXOR, bool flag =0);//will be used to check the XOR vector. flag is used to see what caulations will be needed.
+	int CleanData();//will creat a vertion of boolData withthe p bits set to -1 for easer caulations later
+
 };
