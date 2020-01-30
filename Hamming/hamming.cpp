@@ -33,17 +33,17 @@ vector<int> Hamming::VectorXOR(vector<int> VOne, vector<int> VTwo)
 //----Hamming----
 Hamming::Hamming() {//construtor
 	//test inputs. is the same as in report
-	data->boolData.push_back(0);//lsb
-	data->boolData.push_back(1);
-	data->boolData.push_back(1);
-	data->boolData.push_back(1);
-	data->boolData.push_back(0);
-	data->boolData.push_back(1);//chnaged bit
-	data->boolData.push_back(1);
-	data->boolData.push_back(0);
-	data->boolData.push_back(1);
-	data->boolData.push_back(0);
-	data->boolData.push_back(1);//msb
+	data->boolData.push_back(0);//0 | lsb	
+	data->boolData.push_back(1);//1
+	data->boolData.push_back(1);//1
+	data->boolData.push_back(1);//1
+	data->boolData.push_back(0);//0
+	data->boolData.push_back(1);//0 | chnaged bit	
+	data->boolData.push_back(0);//1 | chnaged bit 2
+	data->boolData.push_back(0);//0
+	data->boolData.push_back(1);//1
+	data->boolData.push_back(0);//0
+	data->boolData.push_back(1);//1 | msb
 }
 
 int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be need to change to binray (vectory of bools?))
@@ -72,15 +72,23 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 
 	//---works out new pbit values--- 	
 	GetPBits();//gets the pbits inclued
-	CleanData();
+	CleanData(data->boolData);
 	newPBits = getNewP(data->boolData);//generates new pbits
 	
 	XOR =  VectorXOR(newPBits, pbit);//gets the XOR vaules for testing with
 	cout << "Vextor XOR:";
 	VectorOut(XOR);
 	cout << endl;
-	CheckXOR(XOR);
+	int returned = CheckXOR(XOR, 0);//flag set to 0 as its one deep
 	
+	cout << "retruned CheckXOR value:" << returned << endl;
+	cout << "Error value:" << data->error << endl;
+	cout << "output data:";
+	cout<< VectorOut(data->retrunData)<<endl;
+
+
+
+
 	return 0;
 }
 
@@ -112,20 +120,20 @@ int Hamming::GetPBits()
 	return 0;
 }
 
-int Hamming::CleanData()
+int Hamming::CleanData(vector<int> input)
 {
 	int isPCount = 0;//used to count thoru the know numbers if poliaty bits	
 
 	//----sets all pbits to = -1----
-	for (int postion = 1; postion <= data->boolData.size(); postion++)//loop throu all of the data
+	for (int postion = 1; postion <= input.size(); postion++)//loop throu all of the data
 	{
 		if (postion != polairtyBits[isPCount])//will only let non Pbits through
 		{
-			cleanData.push_back(data->boolData[postion - 1]);
+			cleanData.push_back(input[postion - 1]);
 			cout << "postion:" << postion;
-			cout << " | data in postion:" << data->boolData[postion - 1];
+			cout << " | data in postion:" << input[postion - 1];
 			cout << " | isPCount:" << isPCount;
-			cout << " | Current Pbit checking for:" << polairtyBits[isPCount] << endl;
+			cout << " | Current Pbit checking for:" << input[isPCount] << endl;
 		}
 		else
 		{
@@ -196,7 +204,7 @@ int Hamming::IntToBool(int num, int testbit)
 	return 0;
 }
 
-int Hamming::CheckXOR(vector<int> inputXOR, bool flag = 0)
+int Hamming::CheckXOR(vector<int> inputXOR, bool flag )
 {
 	bool error = false;//holds a flag for if thre is an error
 	//this funtion will check the output for vectorXOR to see if there are any errors and if so will atempte to fix them
@@ -211,7 +219,7 @@ int Hamming::CheckXOR(vector<int> inputXOR, bool flag = 0)
 	}
 	if (error == true & flag == 0)//if there is an error will atempted to fix it
 	{		
-		//converst xor to int
+		//converst xor bools to int
 		num = accumulate(inputXOR.rbegin(), inputXOR.rend(), 0, [](int x, int y) { return (x << 1) + y; });
 		cout <<"XOR:"<< num << endl;
 		//swpa error bit
@@ -225,11 +233,25 @@ int Hamming::CheckXOR(vector<int> inputXOR, bool flag = 0)
 			swaped[num - 1] = 1;
 		}
 
-
+		cleanData.clear();
+		CleanData(swaped);//recleans data
 		vector<int> XorPBit = getNewP(swaped);
 
 		XorPBit = VectorXOR(XorPBit, pbit);
-		CheckXOR(XorPBit, 1);//sets flag to know it shoudent do all caulations
+		//sets flag to know it shoudent do all caulations
+		if (CheckXOR(XorPBit, 1) == 1)
+		{
+			cout << "Deep 1| CheckXOR(XorPBit, 1) == 1" << endl;
+			data->error = 2;
+			data->retrunData.push_back(-1);
+			return 1;//will retrun if to main error corect that it cannot be fixed
+		}
+		else
+		{
+			cout << "Deep 1| CheckXOR(XorPBit, 1) == 0" << endl;
+			data->error = 1;
+			data->retrunData = swaped;//sets the swaped item
+		}
 		//requlauate pbits
 		//requlaute xor
 		//if ok let through
@@ -238,7 +260,13 @@ int Hamming::CheckXOR(vector<int> inputXOR, bool flag = 0)
 	else if (error == true & flag == 1)
 	{
 		cout << "Two or more error. Cannot correct" << endl;
+		data->error = 2;
 		return 1;
 	}
-	return 0;
+	else if (error == false & flag == 0)
+	{
+		data->error = 0;
+		data->retrunData = data->boolData;//sets the swaped item
+	}
+	return 0;// retrun 0 if binary is corect or corrected
 }

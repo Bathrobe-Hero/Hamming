@@ -15,8 +15,8 @@ class Data { //used to trancef data in and out of the hamming section
 public:
 	vector<int> boolData;//used to hold the data stream (not using bitsream as that needs to know how meany bites befor it can create)
 							//frount values is LSB
-private:
-	int error = 0; //for return: 0=no error found, 1=error found and fixed, -1=error fanc and cant be fixed
+	vector<int> retrunData;
+	int error = 0; //for return: 0=no error found, 1=error found and fixed, -1=error fanc and cant be fixed	
 };
 
 class Hamming :private Data
@@ -40,7 +40,7 @@ private:
 	int VectorOut(vector<int> vOut);//used to output the data in a vector
 	int GetPBits();
 	int IntToBool(int num, int testbit);
-	int CheckXOR(vector<int> inputXOR, bool flag =0);//will be used to check the XOR vector. flag is used to see what caulations will be needed.
-	int CleanData();//will creat a vertion of boolData withthe p bits set to -1 for easer caulations later
+	int CheckXOR(vector<int> inputXOR, bool flag = 0);//will be used to check the XOR vector. flag is used to see what caulations will be needed.
+	int CleanData(vector<int> input);//will creat a vertion of boolData withthe p bits set to -1 for easer caulations later
 
 };
