@@ -11,7 +11,7 @@
 using namespace std;
 
 class Data { //used to trancef data in and out of the hamming section 
-	//TODO how would the data be gotten
+	//TODO change boll data to be privet
 public:
 	vector<int> boolData;//used to hold the data stream (not using bitsream as that needs to know how meany bites befor it can create)
 							//frount values is LSB
@@ -23,7 +23,10 @@ class Hamming :private Data
 {
 public:
 	int ErrorDetect();//TODO change name
+	int SetData(vector<int> input);
+	vector<int> getData();
 	Hamming();//construtor (used for testing untill an input method is devied)
+	
 
 private:
 	vector <int>polairtyBits;//what number bits are the parity bits
@@ -31,12 +34,11 @@ private:
 	Data* data = new Data();//used to return the data (would the user have to make there own data object?)
 	vector<int> pbit;//used to hold the pbit values
 	vector<int> cleanData;// all pbit will be set to -1
-	vector<int>XOR;//holds the XOR value for testing
-	vector<int> VectorXOR(vector<int>VOne, vector<int> VTwo);//used to check if the pbits and newpbits are equal to echother. should be all 0 if they are
+	vector<int>XOR;//holds the XOR value for testing	
 	//--------------------
-
+	vector<int> VectorXOR(vector<int>VOne, vector<int> VTwo);//used to check if the pbits and newpbits are equal to echother. should be all 0 if they are
 	vector<int> getNewP(vector<int> input);//used to check what the value of new pbit is
-	
+	int IsPBit();
 	int VectorOut(vector<int> vOut);//used to output the data in a vector
 	int GetPBits();
 	int IntToBool(int num, int testbit);

@@ -1,0 +1,13 @@
+﻿  Source.cpp
+  hamming.cpp
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(66,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(75,35): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(116,40): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
+          with
+          [
+              _Ty=int
+          ]
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(230,31): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(270,36): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(276,37): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(847,5): error MSB6006: "link.exe" exited with code -1073741510.

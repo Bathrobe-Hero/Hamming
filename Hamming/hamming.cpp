@@ -1,35 +1,5 @@
 #include "hamming.h"
 
-int Hamming::VectorOut(vector<int> vOut)
-{
-	for (int i = 0; i < vOut.size(); i++)
-	{
-		cout << vOut[i] << "|";
-	}
-	cout << endl;
-	return 0;
-}
-
-vector<int> Hamming::VectorXOR(vector<int> VOne, vector<int> VTwo)
-{
-	vector<int> VOut;
-	if (VOne.size() == VTwo.size())
-	{
-		for (int i = 0; i < VOne.size(); i++)
-		{
-			VOut.push_back(VOne[i] ^ VTwo[i]);
-		}
-	}
-	else
-	{
-		cout << "vectors cannot XOR due to diffrent sizes" << endl;
-	}
-
-	return VOut;
-}
-
-
-
 //----Hamming----
 Hamming::Hamming() {//construtor
 	//test inputs. is the same as in report
@@ -39,7 +9,7 @@ Hamming::Hamming() {//construtor
 	data->boolData.push_back(1);//1
 	data->boolData.push_back(0);//0
 	data->boolData.push_back(1);//0 | chnaged bit	
-	data->boolData.push_back(0);//1 | chnaged bit 2
+	data->boolData.push_back(1);//1 | chnaged bit 2
 	data->boolData.push_back(0);//0
 	data->boolData.push_back(1);//1
 	data->boolData.push_back(0);//0
@@ -47,30 +17,9 @@ Hamming::Hamming() {//construtor
 }
 
 int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be need to change to binray (vectory of bools?))
-{
-	VectorOut(data->boolData);	
-	
-	int isP=0;
-	for (int count = 0; isP <= data->boolData.size(); count++)//generates witch bit are polaity
-	{
-		 isP = (pow(2, count));//plarity bits are always this caulation
-		
-		if (isP <= data->boolData.size())
-		{
-			polairtyBits.push_back(isP);
-			cout << isP;
-		}
-		else
-		{
-			isP = data->boolData.size() +2 ;//exit condtion
-		}
-		
-	}
-	cout<<endl;
-	//TODO move most of this to its own funtion
+{	//---works out new pbit values--- 	
 
-
-	//---works out new pbit values--- 	
+	IsPBit();
 	GetPBits();//gets the pbits inclued
 	CleanData(data->boolData);
 	newPBits = getNewP(data->boolData);//generates new pbits
@@ -85,14 +34,43 @@ int Hamming::ErrorDetect() //used for data input. using int for tetsing(will be 
 	cout << "Error value:" << data->error << endl;
 	cout << "output data:";
 	cout<< VectorOut(data->retrunData)<<endl;
-
-
-
-
+	return 0;
+}
+//---------------------------------------------------------------
+int Hamming::SetData(vector<int> input)
+{
+	data->boolData = input;
 	return 0;
 }
 
+vector<int> Hamming::getData()
+{
+	return data->retrunData;
+}
+//------------------------------------------------------------
+int Hamming::IsPBit()//works out which bits are parity bits
+{
+	VectorOut(data->boolData);
 
+	int isP = 0;
+	for (int count = 0; isP <= data->boolData.size(); count++)//generates witch bit are polaity
+	{
+		isP = (pow(2, count));//plarity bits are always this caulation
+
+		if (isP <= data->boolData.size())
+		{
+			polairtyBits.push_back(isP);
+			cout << isP;
+		}
+		else
+		{
+			isP = data->boolData.size() + 2;//exit condtion
+		}
+
+	}
+	cout << endl;
+	return 0;
+}
 
 
 //------------------------------
@@ -119,7 +97,7 @@ int Hamming::GetPBits()
 	VectorOut(pbit);
 	return 0;
 }
-
+//----------------------------------------------
 int Hamming::CleanData(vector<int> input)
 {
 	int isPCount = 0;//used to count thoru the know numbers if poliaty bits	
@@ -147,6 +125,7 @@ int Hamming::CleanData(vector<int> input)
 	VectorOut(cleanData);
 	return 0;
 }
+//-------------------------------------------------------------------
 
 //TODO clean data dose not get the last bit?
 vector<int> Hamming::getNewP(vector<int> input)//recaulates the new plairty bits
@@ -182,7 +161,7 @@ vector<int> Hamming::getNewP(vector<int> input)//recaulates the new plairty bits
 	VectorOut(output);
 	return output;
 }
-
+//----------------------------------------------------------------
 int Hamming::IntToBool(int num, int testbit)
 {
 	bitset<16> bset(num);//max size 65,536. sets num to a binray way
@@ -203,6 +182,8 @@ int Hamming::IntToBool(int num, int testbit)
 	}	
 	return 0;
 }
+
+//--------------------------------------------------
 
 int Hamming::CheckXOR(vector<int> inputXOR, bool flag )
 {
@@ -269,4 +250,33 @@ int Hamming::CheckXOR(vector<int> inputXOR, bool flag )
 		data->retrunData = data->boolData;//sets the swaped item
 	}
 	return 0;// retrun 0 if binary is corect or corrected
+}
+
+//-----------------------------------------------------------------------------
+int Hamming::VectorOut(vector<int> vOut)
+{
+	for (int i = 0; i < vOut.size(); i++)
+	{
+		cout << vOut[i] << "|";
+	}
+	cout << endl;
+	return 0;
+}
+
+vector<int> Hamming::VectorXOR(vector<int> VOne, vector<int> VTwo)
+{
+	vector<int> VOut;
+	if (VOne.size() == VTwo.size())
+	{
+		for (int i = 0; i < VOne.size(); i++)
+		{
+			VOut.push_back(VOne[i] ^ VTwo[i]);
+		}
+	}
+	else
+	{
+		cout << "vectors cannot XOR due to diffrent sizes" << endl;
+	}
+
+	return VOut;
 }
