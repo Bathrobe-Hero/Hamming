@@ -1,20 +1,20 @@
 ﻿  Source.cpp
   hamming.cpp
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(5,20): warning C4018: '<': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(18,21): warning C4018: '<': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(89,26): warning C4018: '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(91,13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(93,11): warning C4018: '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(117,40): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(56,26): warning C4018: '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(58,13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(60,11): warning C4018: '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(84,40): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
           with
           [
               _Ty=int
           ]
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(139,32): warning C4018: '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(168,32): warning C4018: '<': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(173,29): warning C4018: '<=': signed/unsigned mismatch
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(231,31): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(271,36): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(277,37): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(106,32): warning C4018: '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(136,32): warning C4018: '<': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(141,29): warning C4018: '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(200,31): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(240,36): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(246,37): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(257,20): warning C4018: '<': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming\Hamming\hamming.cpp(270,21): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Hamming.vcxproj -> F:\School - Uni\Year 3\Hamming\Hamming\Debug\Hamming.exe

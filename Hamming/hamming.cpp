@@ -165,8 +165,7 @@ vector<int> Hamming::getNewP(vector<int> input)//recaulates the new plairty bits
 int Hamming::IntToBool(int num, int testbit)
 {
 	bitset<16> bset(num);//max size 65,536. sets num to a binray way
-	int even = 0;//hold number of trues for chekcing if evan 
-	//TODO need to be moved so it stay around longer
+	int even = 0;//hold number of trues for chekcing if evan 	
 	cout << bset.to_string() << endl;
 	if (bset.test(testbit) == true)
 	{

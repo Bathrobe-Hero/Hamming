@@ -12,7 +12,7 @@ int menu()
 	{
 		input = 0;
 		vectorInput.clear();
-		cout << "Enter binary one bit at a time. \n Use -1 to exit and 2 to check" << endl;
+		cout << "Enter binary one bit at a time, start with the LSB. \n Use -1 to exit and 2 to check" << endl;
 		while (input == 1 || input == 0)
 		{
 			cin >> input;
@@ -25,6 +25,7 @@ int menu()
 		if (input == 2)
 		{
 			hamming.SetData(vectorInput);//dont use if you want to use the conster for faster testing
+			hamming.ErrorDetect();
 			cout << endl;
 		}
 	}
