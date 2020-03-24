@@ -8,7 +8,7 @@ Hamming::Hamming() {//construtor
 	data->boolData.push_back(1);//1
 	data->boolData.push_back(1);//1
 	data->boolData.push_back(0);//0
-	data->boolData.push_back(1);//0 | chnaged bit	
+	data->boolData.push_back(0);//0 | chnaged bit	
 	data->boolData.push_back(1);//1 | chnaged bit 2
 	data->boolData.push_back(0);//0
 	data->boolData.push_back(1);//1
@@ -53,7 +53,7 @@ int Hamming::IsPBit()//works out which bits are parity bits
 	VectorOut(data->boolData);
 
 	int isP = 0;
-	for (int count = 0; isP <= data->boolData.size(); count++)//generates witch bit are polaity
+	for (int count = 0; isP <= data->boolData.size(); count++)//generates witch bit are polaity. can change with the number of inclued bits
 	{
 		isP = (pow(2, count));//plarity bits are always this caulation
 
