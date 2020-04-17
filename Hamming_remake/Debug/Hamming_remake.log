@@ -1,0 +1,15 @@
+﻿  hamming.cpp
+F:\School - Uni\Year 3\Hamming\Hamming_remake\Hamming_remake\hamming.cpp(32,20): warning C4018: '<': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming_remake\Hamming_remake\hamming.cpp(64,26): warning C4018: '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming_remake\Hamming_remake\hamming.cpp(66,13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+F:\School - Uni\Year 3\Hamming\Hamming_remake\Hamming_remake\hamming.cpp(68,11): warning C4018: '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming_remake\Hamming_remake\hamming.cpp(90,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
+          with
+          [
+              _Ty=int
+          ]
+F:\School - Uni\Year 3\Hamming\Hamming_remake\Hamming_remake\hamming.cpp(111,32): warning C4018: '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming_remake\Hamming_remake\hamming.cpp(141,32): warning C4018: '<': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming_remake\Hamming_remake\hamming.cpp(146,29): warning C4018: '<=': signed/unsigned mismatch
+F:\School - Uni\Year 3\Hamming\Hamming_remake\Hamming_remake\hamming.cpp(194,21): warning C4018: '<': signed/unsigned mismatch
+  Hamming_remake.vcxproj -> F:\School - Uni\Year 3\Hamming\Hamming_remake\Debug\Hamming_remake.exe
